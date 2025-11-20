@@ -1,0 +1,226 @@
+[
+    {
+      "name": "SEV",
+      "channel": "71",
+      "index": 1,
+      "id": "69022174",
+      "imageId": "button_SEV_290x170",
+      "network": "Seven"
+    },
+    {
+      "name": "SEVHD",
+      "channel": "70",
+      "index": 2,
+      "id": "69045259",
+      "imageId": "button_DSS_290x170",
+      "network": "Seven"
+    },
+    {
+      "name": "SEVTWO",
+      "channel": "72",
+      "index": 3,
+      "id": "69045260",
+      "imageId": "button_SEV2_290x170",
+      "network": "Seven"
+    },
+    {
+      "name": "SEVMATE",
+      "channel": "74",
+      "index": 4,
+      "id": "69045261",
+      "imageId": "button_MAS_290x170",
+      "network": "Seven"
+    },
+    {
+      "name": "SEVBRAV",
+      "channel": "75",
+      "index": 5,
+      "id": "69045262",
+      "imageId": "button_7Bravo_290x170",
+      "network": "Seven"
+    },
+    {
+      "name": "SEVFLIX",
+      "channel": "76",
+      "index": 6,
+      "id": "69045263",
+      "imageId": "button_FLN_290x170",
+      "network": "Seven"
+    },
+    {
+      "name": "RACING",
+      "channel": "78",
+      "index": 7,
+      "id": "69045264",
+      "imageId": "button_RTV_290x170",
+      "network": "Seven"
+    },
+    {
+      "name": "9HD",
+      "channel": "90",
+      "index": 1,
+      "id": "69022190",
+      "imageId": "button_9HD_290x170",
+      "network": "Nine"
+    },
+    {
+      "name": "9GEM",
+      "channel": "92",
+      "index": 2,
+      "id": "69022192",
+      "imageId": "button_9GEM_290x170",
+      "network": "Nine"
+    },
+    {
+      "name": "9GO",
+      "channel": "93",
+      "index": 3,
+      "id": "69022193",
+      "imageId": "button_9GO_290x170",
+      "network": "Nine"
+    },
+    {
+      "name": "9LIFE",
+      "channel": "94",
+      "index": 4,
+      "id": "69022194",
+      "imageId": "button_LS9_290x170",
+      "network": "Nine"
+    },
+    {
+      "name": "9GEMHD",
+      "channel": "95",
+      "index": 5,
+      "id": "69045295",
+      "imageId": "button_G02_290x170",
+      "network": "Nine"
+    },
+    {
+      "name": "9RUSH",
+      "channel": "96",
+      "index": 6,
+      "id": "69045296",
+      "imageId": "button_9Rush_290x170",
+      "network": "Nine"
+    },
+    {
+      "name": "EXTRA",
+      "channel": "97",
+      "index": 7,
+      "id": "69045297",
+      "imageId": "button_Extra_290x170",
+      "network": "Nine"
+    },
+    {
+      "name": "ABCHD",
+      "channel": "20",
+      "index": 1,
+      "id": "69022120",
+      "imageId": "button_ABCHD_290x170",
+      "network": "ABC"
+    },
+    {
+      "name": "ABC",
+      "channel": "2",
+      "index": 2,
+      "id": "69022102",
+      "imageId": "button_ABC1_290x170",
+      "network": "ABC"
+    },
+    {
+      "name": "ABCNEWS",
+      "channel": "24",
+      "index": 3,
+      "id": "69022124",
+      "imageId": "button_ABCN_290x170",
+      "network": "ABC"
+    },
+    {
+      "name": "ABCKIDS",
+      "channel": "22",
+      "index": 4,
+      "id": "69022122",
+      "imageId": "button_ABC2_290x170",
+      "network": "ABC"
+    },
+    {
+      "name": "ABCME",
+      "channel": "23",
+      "index": 4,
+      "id": "69022123",
+      "imageId": "button_ABC3_290x170",
+      "network": "ABC"
+    },
+    {
+      "name": "SBSHD",
+      "channel": "30",
+      "index": 1,
+      "id": "69022130",
+      "imageId": "button_SBSHD_290x170",
+      "network": "SBS"
+    },
+    {
+      "name": "VICELANDHD",
+      "channel": "31",
+      "index": 2,
+      "id": "69022131",
+      "imageId": "button_SBSV_290x170",
+      "network": "SBS"
+    },
+    {
+      "name": "WORLDMOVIES",
+      "channel": "32",
+      "index": 3,
+      "id": "69022132",
+      "imageId": "button_SBSW_290x170",
+      "network": "SBS"
+    },
+    {
+      "name": "SBSFOOD",
+      "channel": "33",
+      "index": 4,
+      "id": "69022133",
+      "imageId": "button_SBSF_290x170",
+      "network": "SBS"
+    },
+    {
+      "name": "WORLDWATCH",
+      "channel": "35",
+      "index": 5,
+      "id": "69045235",
+      "imageId": "button_SWW_290x170",
+      "network": "SBS"
+    },
+    {
+      "name": "NITV",
+      "channel": "34",
+      "index": 6,
+      "id": "69045234",
+      "imageId": "button_NNS_290x170",
+      "network": "SBS"
+    },
+    {
+      "name": "TENHD",
+      "channel": "1",
+      "index": 1,
+      "id": "69022110",
+      "imageId": "button_THE_290x170",
+      "network": "Ten"
+    },
+    {
+      "name": "TENB",
+      "channel": "12",
+      "index": 2,
+      "id": "69022112",
+      "imageId": "button_TENB_290x170",
+      "network": "Ten"
+    },
+    {
+      "name": "TENP",
+      "channel": "11",
+      "index": 3,
+      "id": "69022111",
+      "imageId": "button_TENP_290x170",
+      "network": "Ten"
+    }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "jut-room-alt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url .",
+    "build:archive": "ch5-cli archive -p JUT-ROOM -d dist -o TST"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@crestron/ch5-crcomlib": "^1.0.0",
+    "rangeslider.js": "^2.3.3"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
