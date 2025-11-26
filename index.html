@@ -1,288 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
-    <title>JUT-ROOM</title>
-    <link rel="stylesheet" href="./assets/CSS/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FOXTEL-TSW760</title>
+    <link rel="stylesheet" href="assets/css/styles.css"> 
 </head>
-<!-- <div style="background-color: rgba(201, 201, 201, 0.13); position: absolute; top: 0px; left: 0px; height: 1200px; width: 1920px;"></div> -->
 
-<body style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; margin: 0; overscroll-behavior: none; ">
-    <div class="dpad-select-press" style="visibility: hidden; width: 0%; height: 0%; z-index: -100;">
-    </div>
-    <div class="dpad-up-press" style="visibility: hidden; width: 0%; height: 0%; z-index: -100;">
-    </div>
-    <div class="dpad-down-press" style="visibility: hidden; width: 0%; height: 0%; z-index: -100;">
-    </div>
-    <div class="dpad-left-press" style="visibility: hidden; width: 0%; height: 0%; z-index: -100;">
-    </div>
-    <div class=" dpad-right-press" style="visibility: hidden; width: 0%; height: 0%; z-index: -100;">
-    </div>
-    <div class=" folder-icon" style="visibility: hidden; width: 0%; height: 0%; z-index: -100;">
-    </div>
-    <div class=" picture-icon" style="visibility: hidden; width: 0%; height: 0%; z-index: -100;">
-    </div>
-    <div class=" video-icon" style="visibility: hidden; width: 0%; height: 0%; z-index: -100;">
-    </div>
+<body>
+    <div class="main-container">
 
-    <!-- Header -->
-    <div style="position:absolute; left:1vw; width:98vw; top:0vh; height:2hv; display: flex; flex-direction: row; justify-content: space-between; overflow: hidden;">
-        <p id="current-time" style="margin: 0.5vh;">Current Time</p>
-        <div style="display: flex; flex-direction: row;">
-            <p id="battery-level" style="margin: 0.5vh;">Current Battery</p>
-            <div style="display: grid; align-items: center; justify-content: center;">
-                <img id="battery-charging-icon" src="\assets\img\charging.png" style="visibility: hidden; z-index: 2; grid-column: 1; grid-row: 1; scale: 1;" height="28px" width="28px">
-                <img src="\assets\img\battery-icon.png" style="z-index: 1; grid-column: 1; grid-row: 1;" height="28px" width="28px">
-                <div id="battery-level-icon" style="margin-left: 3px; grid-column: 1; grid-row: 1; height: 8px; width: 20px; background-color: white;">
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class="header">
+            <img src="assets/img/pro-av-logo.png" alt="Pro AV Solutions" class="header-logo">
 
-    <!-- Source, Sub, Volume -->
-    <!-- <div id="source-sub-vol" style="visibility: hidden; position:absolute; left:0vw; width:98vw; top:2vh; height:calc(98vh - 2vw); display: flex; flex-direction: column; margin: 1vw; row-gap: 1vw; overflow: hidden;">
-        <-- Sources Header & Battery -->
-        <div class="sub" style="position:relative; left:0; top:0; width:100%; height:20vh; display: none;">
-            <h4 class="subHeader" style="position: absolute;">Sources</h4>
-            <div class="sources">
-                <button class="source-button-space"></button>
-                <button class="source-button" id="src1" value="1" type="button" style="background-image: url(.\assets\img\68jp-icon-fetch.png); background-position: center center; background-repeat: no-repeat; background-size: 45%"></button>
-                <button class="source-button" id="src2" value="2" type="button" style="background-image: url(.\assets\img\68jp-icon-foxtel.png); background-position: center center; background-repeat: no-repeat; background-size: 45%"></button>
-                <button class="source-button" id="src3" value="3" type="button" style="background-image: url(.\assets\img\68jp-icon-atv-rev.png); background-position: center center; background-repeat: no-repeat; background-size: 45%"></button>
-                <button class="source-button" id="src4" value="4" type="button" style="background-image: url(.\assets\img\68jp-icon-vc-rev-2.png); background-position: center center; background-repeat: no-repeat; background-size: 55%"></button>
-                <button class="source-button" id="src5" value="5" type="button" style="background-image: url(.\assets\img\off.png); display:inline; background-position: center center; background-repeat: no-repeat; background-size: 115%"></button>
-                <button class="source-button" id="src9" value="9" type="button" style="background-image: url(.\assets\img\standby.png); display:none; background-position: center center; background-repeat: no-repeat; background-size: 115%"></button>
-                <button class="source-button" id="src7" value="7" type="button" style="background-image: url(.\assets\img\art.png); background-position: center center; background-repeat: no-repeat; background-size: 115%"></button>
-                <button class="source-button" id="src6" value="6" type="button" style="background-image: url(.\assets\img\clickshare.png); background-position: center center; background-repeat: no-repeat; background-size: 100%"></button>
-                <button class="source-button-space"></button>
-                <button class="source-button" id="src8" value="8" type="button" style="background-image: url(.\assets\img\Lights-v3.png); background-position: center center; background-repeat: no-repeat; background-size: 115%"></button>
-            </div>
+            <div id="current-time">12:00 PM</div>
         </div>
 
-        <!-- Sub Pages -->
-        <div style="position:relative; left:0; top:0; width:100%; height:100%">
+        <div class="source-bar">
+            <button id="src2" class="source-btn source-button-active" value="2">
+                <span>Foxtel</span>
+            </button>
+
+            <button id="src-media" class="source-btn" value="99">
+                <span>Media Player</span>
+            </button>
+
+            <div style="width: 20px;"></div> 
+
+        </div>
+
+        <div class="content-area">
             
-            <!-- Source TV -->
-            <div id="fetch-sub" class="sub"
-                style="position: absolute; left: 0; right: 0; width: 100%; height: 100%; visibility: visible;">
-                <!-- Remote -->
-                <div id="fetch-remote" class="remote">
-                    <div class="remote-centering">
-                        <div id="fetch-remote-casing-dpad">
-                            <div class="menu-guide-casing">
-                                <button class="remote-menu remote-button-generic">Menu</button>
-                                <button class="remote-guide remote-button-generic">Guide</button>
-                            </div>
-                            <div class="dpad" style="background-size: contain;">
-                                <button class="dpad-button"></button>
-                                <button class="remote-up dpad-button" style="z-index: 2;"></button>
-                                <button class="dpad-button"></button>
-                                <button class="remote-left dpad-button"></button>
-                                <button class="remote-select dpad-button"></button>
-                                <button class="remote-right dpad-button"></button>
-                                <button class="dpad-button"></button>
-                                <button class="remote-down dpad-button" style="z-index: 2;"></button>
-                                <button class="dpad-button"></button>
-                            </div>
-                            <div class="back-exit-casing">
-                                <button class="remote-back remote-button-generic">Back</button>
-                                <button class="remote-exit remote-button-generic">Exit</button>
-                            </div>
-                        </div>
-                        <div class="reverse-play-pause-forward-casing">
-                            <button class="remote-reverse remote-button-generic"
-                                style="background-image: url(.\assets\img\reversebutton.png); background-position: center center; background-repeat: no-repeat; background-size: contain"></button>
-                            <button class="remote-playpause remote-button-generic"
-                                style="background-image: url(.\assets\img\playpausebutton.png); background-position: center center; background-repeat: no-repeat; background-size: contain"></button>
-                            <button class="remote-forward remote-button-generic"
-                                style="background-image: url(.\assets\img\forwardbutton.png); background-position: center center; background-repeat: no-repeat; background-size: contain"></button>
-                        </div>
-                        <div class="stop-record-casing">
-                            <button class="remote-stop remote-button-generic stop-button"></button>
-                            <button class=" remote-record remote-button-generic"><span
-                                    style="background-color: red; width: 20%; display: block; border-radius: 100%; left: 40%; position: relative; aspect-ratio: 1;"></span></button>
-                        </div>
-                        <div class="coloured-buttons">
-                            <button class="remote-red remote-button-generic circle"><span class="inner-circle"
-                                    style="background-color: red;"></span></button>
-                            <button class="remote-green remote-button-generic circle"><span class="inner-circle"
-                                    style="background-color: green;"></span></button>
-                            <button class="remote-yellow remote-button-generic circle"><span class="inner-circle"
-                                    style="background-color: yellow;"></span></button>
-                            <button class="remote-blue remote-button-generic circle"><span class="inner-circle"
-                                    style="background-color: blue;"></span></button>
-                        </div>
+            <div id="fox-sub" class="sub-page-container">
+                
+                <div class="glass-box" style="justify-content: flex-start;">
+    
+                    <div class="channel-header">
+                        <h3 style="margin:0; color:var(--text-accent);">FOXTEL CONTROL</h3>
+                        
+                        <button id="btn-display-power" class="r-btn power-btn">&#x23FB;</button>
                     </div>
-                    <div id="fetch-remote-casing-numpad"
-                        class="display-none-class remote-casing-numpad remote-centering">
-                        <button class="remote-1 remote-button-generic">1</button>
-                        <button class="remote-2 remote-button-generic">2</button>
-                        <button class="remote-3 remote-button-generic">3</button>
-                        <button class="remote-4 remote-button-generic">4</button>
-                        <button class="remote-5 remote-button-generic">5</button>
-                        <button class="remote-6 remote-button-generic">6</button>
-                        <button class="remote-7 remote-button-generic">7</button>
-                        <button class="remote-8 remote-button-generic">8</button>
-                        <button class="remote-9 remote-button-generic">9</button>
-                        <button class="remote-0 remote-button-wide">0</button>
-                    </div>
-                </div>
-                <div style="position: absolute; left: 47%; width: 50%;"> <!-- TV Presets -->
-                    <div class="remote-sel-channelUpDn">
-                        <button id="fetch-remote-style" class="flip-button dpad-active"></button>
-                        <div></div>
-                        <button class="remote-channel-down remote-button-generic">Ch -</button>
-                        <button class="remote-channel-up remote-button-generic" style="padding-left: 1vw;">Ch +</button>
-                    </div>
-                    <div class="network-navigation">
-                        <button id="fetch-network-navigation-button-previous"
-                            class="navigation-button-previous"></button>
-                        <h2 id="fetch-network-name">network</h2>
-                        <button id="fetch-network-navigation-button-next" class="navigation-button-next"></button>
-                    </div>
-                    <div id="fetch-channel-div" class="tv-channel-div">
-                        <div class="tv-channel" value="channel-number">
-                            <div style="background-image: url(.\assets\img\outer_glow.png); height: 12.5vh; width: 15vw; background-position: center center; background-size: contain; background-repeat: no-repeat; visibility: hidden; opacity: 40%;"></div>
+                    
+                    <div class="remote-container" style="margin-top: auto; margin-bottom: auto;">
+                        
+                        <div class="remote-row">
+                            <button id="foxtel-remote-style" class="r-btn pill">123/Nav</button>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Source Foxtel -->
-            <div id="fox-sub" class="sub"
-                style="position: absolute; left: 0; right: 0; width: 100%; height: 100%; visibility: visible;">
-                <!-- Remote -->
-                <div id="fox-remote" class="remote">
-                    <div class="remote-centering">
-                        <div id="fox-remote-casing-dpad">
-                            <div class="menu-guide-casing">
-                                <button class="remote-menu remote-button-generic">Menu</button>
-                                <button class="remote-guide remote-button-generic">Guide</button>
-                            </div>
-                            <div class="dpad" style="background-size: contain;">
-                                <button class="dpad-button"></button>
-                                <button class="remote-up dpad-button" style="z-index: 2;"></button>
-                                <button class="dpad-button"></button>
-                                <button class="remote-left dpad-button"></button>
-                                <button class="remote-select dpad-button"></button>
-                                <button class="remote-right dpad-button"></button>
-                                <button class="dpad-button"></button>
-                                <button class="remote-down dpad-button" style="z-index: 2;"></button>
-                                <button class="dpad-button"></button>
-                            </div>
-                            <div class="back-exit-casing">
-                                <button class="remote-back remote-button-generic">Back</button>
-                                <button class="remote-exit remote-button-generic">Exit</button>
-                            </div>
+                        <div class="remote-row">
+                            <button class="r-btn pill remote-menu">MENU</button>
+                            <button class="r-btn pill remote-guide">GUIDE</button>
                         </div>
-                        <div class="reverse-play-pause-forward-casing">
-                            <button class="remote-reverse remote-button-generic"
-                                style="background-image: url(.\assets\img\reversebutton.png); background-position: center center; background-repeat: no-repeat; background-size: contain"></button>
-                            <button class="remote-playpause remote-button-generic"
-                                style="background-image: url(.\assets\img\playpausebutton.png); background-position: center center; background-repeat: no-repeat; background-size: contain"></button>
-                            <button class="remote-forward remote-button-generic"
-                                style="background-image: url(.\assets\img\forwardbutton.png); background-position: center center; background-repeat: no-repeat; background-size: contain"></button>
+
+                        <div id="fox-remote-casing-dpad" class="dpad-grid dpad">
+                            <div></div>
+                            <button class="dpad-btn remote-up">▲</button>
+                            <div></div>
+                            <button class="dpad-btn remote-left">◀</button>
+                            <button class="dpad-btn dpad-center remote-select">OK</button>
+                            <button class="dpad-btn remote-right">▶</button>
+                            <div></div>
+                            <button class="dpad-btn remote-down">▼</button>
+                            <div></div>
                         </div>
-                        <div class="stop-record-casing">
-                            <button class="remote-stop remote-button-generic stop-button"></button>
-                            <button class="remote-record remote-button-generic"><span
-                                    style="background-color: red; width: 20%; display: block; border-radius: 100%; left: 40%; position: relative; aspect-ratio: 1;"></span></button>
+
+                        <div id="fox-remote-casing-numpad" class="dpad-grid display-none-class" style="background: transparent;">
+                            <button class="dpad-btn remote-1">1</button>
+                            <button class="dpad-btn remote-2">2</button>
+                            <button class="dpad-btn remote-3">3</button>
+                            <button class="dpad-btn remote-4">4</button>
+                            <button class="dpad-btn remote-5">5</button>
+                            <button class="dpad-btn remote-6">6</button>
+                            <button class="dpad-btn remote-7">7</button>
+                            <button class="dpad-btn remote-8">8</button>
+                            <button class="dpad-btn remote-9">9</button>
+                            <div></div>
+                            <button class="dpad-btn remote-0">0</button>
+                            <div></div>
                         </div>
-                        <div class="coloured-buttons">
-                            <button class="remote-red remote-button-generic circle"><span class="inner-circle"
-                                    style="background-color: red;"></span></button>
-                            <button class="remote-green remote-button-generic circle"><span class="inner-circle"
-                                    style="background-color: green;"></span></button>
-                            <button class="remote-yellow remote-button-generic circle"><span class="inner-circle"
-                                    style="background-color: yellow;"></span></button>
-                            <button class="remote-blue remote-button-generic circle"><span class="inner-circle"
-                                    style="background-color: blue;"></span></button>
+
+                        <div class="remote-row">
+                            <button class="r-btn pill remote-back">BACK</button>
+                            <button class="r-btn pill remote-exit">EXIT</button>
                         </div>
-                    </div>
-                    <div id="fox-remote-casing-numpad" class="display-none-class remote-casing-numpad remote-centering">
-                        <button class="remote-1 remote-button-generic">1</button>
-                        <button class="remote-2 remote-button-generic">2</button>
-                        <button class="remote-3 remote-button-generic">3</button>
-                        <button class="remote-4 remote-button-generic">4</button>
-                        <button class="remote-5 remote-button-generic">5</button>
-                        <button class="remote-6 remote-button-generic">6</button>
-                        <button class="remote-7 remote-button-generic">7</button>
-                        <button class="remote-8 remote-button-generic">8</button>
-                        <button class="remote-9 remote-button-generic">9</button>
-                        <button class="remote-0 remote-button-wide">0</button>
+
+                        <div class="color-row">
+                            <button class="c-btn red remote-red"></button>
+                            <button class="c-btn green remote-green"></button>
+                            <button class="c-btn yellow remote-yellow"></button>
+                            <button class="c-btn blue remote-blue"></button>
+                        </div>
                     </div>
                 </div>
-                <div style="position: absolute; left: 47%; width: 50%;"> <!-- TV Presets -->
-                    <div class="remote-sel-channelUpDn">
-                        <button id="foxtel-remote-style" class="flip-button dpad-active"></button>
-                        <div></div>
-                        <button class="remote-channel-down remote-button-generic">Ch -</button>
-                        <button class="remote-channel-up remote-button-generic" style="padding-left: 1vw;">Ch +</button>
+
+                <div class="glass-box" style="align-items: stretch;">
+    
+                    <div class="channel-header">
+                        <h3 style="margin:0; color:var(--text-accent);">CHANNELS</h3>
+                        
+                        <div class="remote-row" style="width: auto; gap: 10px;">
+                            <button class="r-btn nav-pill remote-channel-down">CH -</button>
+                            <button class="r-btn nav-pill remote-channel-up">CH +</button>
+                        </div>
+
+                        <div class="nav-bar">
+                            <button id="fox-network-navigation-button-previous" class="r-btn nav-arrow-btn">◀</button>
+                            <span id="fox-network-name" class="nav-text">Network</span>
+                            <button id="fox-network-navigation-button-next" class="r-btn nav-arrow-btn">▶</button>
+                        </div>
                     </div>
-                    <div class="network-navigation">
-                        <button id="fox-network-navigation-button-previous" class="navigation-button-previous"></button>
-                        <h2 id="fox-network-name">network</h2>
-                        <button id="fox-network-navigation-button-next" class="navigation-button-next"></button>
-                    </div>
-                    <div id="fox-channel-div" class="tv-channel-div">
-                        <button class="tv-channel" value="channel-number"></button>
+
+                    <div id="fox-channel-div" class="channel-grid">
+                        <button class="channel-btn">Loading...</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Black Covering -->
-            <div id="covering" class="sub power-page hide-element"
-                style="position: absolute; left: 0; right: 0; width: 100%; height: 100%; background-color: black;">
+            <div id="media-sub" class="sub-page-container hide-element">
+                <div class="glass-box" style="grid-column: span 2;">
+                    <h3 style="color:var(--text-accent);">MEDIA PLAYER</h3>
+                    <p style="color:var(--text-sub);">Future Source Integration</p>
+                    <div class="remote-container">
+                        <div class="remote-row transport-bar">
+                            <button class="r-btn remote-reverse">⏪</button>
+                            <button class="r-btn remote-playpause">⏯</button>
+                            <button class="r-btn remote-stop">⏹</button>
+                            <button class="r-btn remote-forward">⏩</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Powering On Page -->
-            <div id="powering-on-sub" class="sub power-page hide-element"
-                style="position: absolute; left: 0; right: 0; width: 100%; height: 100%;">
-                <p>Please wait while the display powers on</p>
-                <br>
-                <div class="loading-gif"></div>
-            </div>
-
-            <!-- Powering Off Page -->
-            <div id="powering-off-sub" class="sub power-page hide-element"
-                style="position: absolute; left: 0; right: 0; width: 100%; height: 100%;">
-                <p>Please wait while the display powers off</p>
-                <br>
-                <div class="loading-gif"></div>
-            </div>
         </div>
 
-        <!-- Volume -->
-        <div id="vol-sub" class="sub" style="position:relative; left:50%; top:0; width:50%; height:10vh; visibility: visible;">
-            <div class="volume" style="height: 100%; width: 100%;">
-
-                <button id="volume-mute"></button>
-                <div class="volume-slidecontainer">
-                    <input id="volume-slider" class="slider-horizontal" type="range" min="0" max="65535" step="1"
-                        value="0" data-orientation="horizontal">
-                </div>
-                <!-- <div id="volume-more">...</div> -->
-            </div>
+        <div id="vol-sub" class="volume-container">
+            <button id="volume-mute" class="r-btn" style="width: 50px; height: 50px;">🔇</button>
+            <input id="volume-slider" class="vol-slider" type="range" min="0" max="65535" step="1" value="30000">
+            <span style="width: 50px; text-align: center;">VOL</span>
         </div>
+
     </div>
 
-    <!-- System Powered Off -->
-    <!-- <div id="powered-off" style="position:absolute; z-index: 30; left:1vw; width:100vw; top:4vh; height:calc(98vh - 2vw); background-image: url(.\assets\img\background.png); background-size: 110%; background-position: center center; background-repeat: no-repeat; visibility: hidden;">
-        <button id="system-power-on" class="light-button-on-off" style="top: 65vh; position: absolute; left: 30.5vw; width: 36vw; height: 10vh">System Power On</button>
-    </div> -->
+    <div id="powering-on-sub" class="loading-overlay hide-element">
+        <div class="spinner"></div>
+        <h2 style="margin-top: 20px;">System Powering On...</h2>
+    </div>
+
+    <div id="covering" class="loading-overlay hide-element"></div>
+
+    <div id="powering-off-sub" class="loading-overlay hide-element">
+        <div class="spinner"></div>
+        <h2 style="margin-top: 20px;">System Powering Off...</h2>
+    </div>
+
+    <script type="text/javascript" src="assets/js/index.js"></script>
+    <script type="text/javascript" src="assets/js/foxtelChannels.js"></script>
+    <script type="text/javascript" src="assets/js/poweringPageDisplay.js"></script>
+    <script type="text/javascript" src="assets/js/remote-dpad.js"></script>
+    <script type="text/javascript" src="assets/js/sourceSelect.js"></script>
+    <script type="text/javascript" src="assets/js/volSlider.js"></script>
 
 </body>
-<script type="text/javascript" src="assets/js/index.js"></script>
-<!-- all scripts should be below index.js as to not cause errors -->
-<script type="text/javascript" src="assets/js/batteryIndicator.js"></script>
-<script type="text/javascript" src="assets/js/foxtelChannels.js"></script>
-<script type="text/javascript" src="assets/js/poweringPageDisplay.js"></script>
-<script type="text/javascript" src="assets/js/remote-dpad.js"></script>
-<script type="text/javascript" src="assets/js/sourceSelect.js"></script>
-<script type="text/javascript" src="assets/js/timeSlider.js"></script>
-<!-- <script type="text/javascript" src="assets/js/tvChannels-fromAPI.js"></script> -->
-<script type="text/javascript" src="assets/js/tvChannels.js"></script>
-<script type="text/javascript" src="assets/js/volSlider.js"></script>
 </html>

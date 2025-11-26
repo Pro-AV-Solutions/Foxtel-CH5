@@ -4,18 +4,11 @@ let urls_by_network = {}
 let network_chosen = 0;
 let all_networks = [];
 let num_networks = 0;
-let tvChannelDiv = document.getElementById("fetch-channel-div");
-let currentNetwork = document.getElementById("fetch-network-name");
-
-let fetchDpadCasing = document.getElementById("fetch-remote-casing-dpad");
-let fetchNumpadCasing = document.getElementById("fetch-remote-casing-numpad");
 
 let foxtelDpadCasing = document.getElementById("fox-remote-casing-dpad");
 let foxtelNumpadCasing = document.getElementById("fox-remote-casing-numpad");
 
 
-let fetchbuttonflip = document.getElementById("fetch-remote-style");
-let foxtelbuttonflip = document.getElementById("foxtel-remote-style");
 import data from '../tv-channels.json';
 
 function getTVDataStartup() {

@@ -1,1278 +1,550 @@
+/* --- SHARED THEME VARIABLES --- */
 :root {
-  --bg: rgba(0, 0, 0, 1);
-  --subFill: rgba(128, 128, 128, 0.5);
-  --subBorder: rgba(128, 128, 128, 0.51);
-  --btn: rgba(0, 0, 0, 1);
-  --btnPressed: rgba(100, 100, 100, 1);
-  --btnActive: rgba(1, 153, 253, 1);
-  --font: rgba(255, 255, 255, 1);
-  --fontAccent: rgba(192, 192, 192, 1);
-  --menuBtn: rgba(0, 0, 0, 0);
-  --menuBorder: rgba(128, 128, 128, 0.51);
-  --scrollBarThumb: rgba(128, 128, 128, 0.51);
-  --scrollbarTrack: rgba(0, 0, 0, 0);
+    --bg-gradient: radial-gradient(circle at top left, #1a2a3a, #050505);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(20px);
+    --text-main: #ffffff;
+    --text-sub: #8b9bb4;
+    --text-accent: #38bdf8;
+    --text-live: #22c55e;
+    --btn-bg: rgba(255, 255, 255, 0.05);
+    --btn-hover: rgba(255, 255, 255, 0.15);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-p {
-  font-family: Crestron;
-  src: url("\assets\CSS\CRESTRONSANSPRO-LIGHT.OTF");
-  color: var(--font);
-  font-size: 1.75vh;
-}
-
-@font-face {
-  font-family: Crestron;
-  src: url("\assets\CSS\CRESTRONSANSPRO-LIGHT.OTF");
+/* --- RESET & BASICS --- */
+* {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 body {
-  background-color: var(--bg);
-  /* variables from above */
-  color: var(--font);
-  overflow-y: hidden;
-  /* Hide vertical scrollbar */
-  overflow-x: hidden;
-  /* Hide horizontal scrollbar */
+    margin: 0;
+    padding: 0;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
-h4.subHeader {
-  color: var(--fontAccent);
-  font-style: normal;
-  font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5em;
-  position: relative;
-  left: 1vw;
-  top: -0.3vw;
+/* --- MAIN LAYOUT GRID --- */
+.main-container {
+    display: grid;
+    /* CHANGE: Use minmax(0, 1fr) instead of just 1fr. 
+       This forces the middle row to stay within the viewport limits. */
+    grid-template-rows: 60px 100px minmax(0, 1fr) 80px; 
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
 }
 
-::-webkit-scrollbar {
-  width: 3px;
+/* REMOVED .battery-display class */
+
+/* --- SOURCE BAR --- */
+.source-bar {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 5px;
+    align-items: center;
+    
+    /* CHANGED: Moves buttons to the far right */
+    justify-content: flex-end; 
+    
+    /* NEW: Adds a little breathing room from the screen edge */
+    padding-right: 40px; 
 }
 
-::-webkit-scrollbar-track {
-  background: var(--scrollbarTrack);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--scrollBarThumb);
-}
-
-div.verticalMenu button {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5em;
-  text-align: right;
-
-  border-bottom: 0.1vh solid var(--menuBorder);
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  color: var(--font);
-  height: 6.5vh;
-  padding: 0% 1vw;
-  width: 100%;
-  display: block;
-  background-size: 6vh, auto;
-  background-repeat: no-repeat;
-  background-position: 0.5vw;
-}
-
-.listButton,
-.listHeader {
-  background-color: var(--menuBtn);
-}
-
-.listButtonActive,
-.listButton:hover {
-  color: var(--font);
-  background-color: var(--btnActive);
-}
-
-div.verticalMenu {
-  position: relative;
-  top: -2.5vh;
-  left: 2%;
-  width: 96%;
-  overflow-y: auto;
-  white-space: nowrap;
-}
-
-div.verticalMenu button.listHeader {
-  text-align: left;
-  color: var(--fontAccent);
-}
-
-div.verticalMenu button.levelHeader:active {
-  color: var(--font);
-  background-color: var(--btnActive);
-}
-
-div.sub {
-  background-color: var(--subFill);
-  border: 1px solid;
-  border-color: var(--subBorder);
-  border-radius: 1vw;
-  color: var(--fontAccent);
-  font-style: normal;
-  font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.75em;
-}
-
-button:focus {
-  outline: none;
-  /* to stop a wierd border going around the buttons when hovered over*/
-}
-
-.source-button-space {
-  background-color: rgba(0, 0, 0, 0);
-  border: 0;
-  margin-left: 0.2%;
-  margin-right: 0.2%;
-  margin-top: 0%;
-  margin-bottom: 0.4%;
-  width: 19%;
-}
-
-.source-button {
-  background-color: rgb(31, 31, 31);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  font-style: normal;
-  font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2em;
-  margin-left: 0.2%;
-  margin-right: 0.2%;
-  margin-top: 0%;
-  margin-bottom: 0.4%;
-  width: 19%;
-  height: 43%;
-}
-
-.sources {
-  display: auto;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  top: 5%;
-  left: 1%;
-}
-
-.volume {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-#volume-mute {
-  /* background-color: red; */
-  height: 61.8%;
-  aspect-ratio: 1;
-  margin: 1vw;
-  border: 0;
-}
-
-.sound-unmuted-icon {
-  background: url('\assets\img\volume.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-
-.sound-muted-icon {
-  background: url('\assets\img\vol-muted.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-
-#volume-more {
-  background-color: red;
-  height: 61.8%;
-  aspect-ratio: 1;
-  margin: 1vw;
-}
-
-.volume-slidecontainer {
-  width: calc(100% - 0.618*(2/3)*30vh);
-}
-
-.slidecontainer-h {
-  width: 100%;
-}
-
-.slidecontainer-v {
-  height: 100%;
-  align-content: center;
-  width: 3vw;
-}
-
-.laptop-text {
-  position: inherit;
-  width: 100%;
-  height: 60%;
-  align-content: center;
-  text-align: center;
-}
-
-.laptop-signal {
-  position: inherit;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.dot {
-  height: 2vw;
-  width: 2vw;
-  background-color: #2e2e2e;
-  border-radius: 50%;
-  margin: 1vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dot-active {
-  position: relative;
-  height: 1.6vw;
-  width: 1.6vw;
-  background-color: rgb(0, 200, 0);
-  border-radius: 50%;
-}
-
-.source-button:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
-}
-
+/* Note: mapped to .source-btn for styling, but keeping source-button classes for JS compatibility */
+.source-btn, 
+.source-button, 
 .source-button-active {
-  background-color: rgb(0, 0, 212);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  font-style: normal;
-  font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2em;
-  margin-left: 0.2%;
-  margin-right: 0.2%;
-  margin-top: 0%;
-  margin-bottom: 0.4%;
-  width: 19%;
-  height: 43%;
-}
-
-/* TV Presets*/
-
-.tv-channel-div {
-  display: grid;
-  position: relative;
-  width: 100%;
-  height: 52vh;
-  grid-template-columns: 50% 50%;
-  grid-auto-rows: minmax(min-content, max-content);
-  /* grid-template-columns: 33.3% 33.3% 33.3%; */
-  row-gap: 2vw;
-
-  column-gap: 5%;
-  padding-left: 2%;
-  padding-right: 1%;
-  overflow-x: hidden;
-  /* Hide horizontal scrollbar */
-}
-
-.tv-channel {
-  align-content: center;
-  text-align: center;
-  height: 12.5vh;
-  width: 15vw;
-  border: 0px;
-  background: url('\assets\img\button_9HD_290x170.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.remote-sel-channelUpDn {
-  width: 100%;
-  height: 4vh;
-  display: grid;
-  align-content: center;
-  text-align: center;
-  justify-content: center;
-  padding: 2vw 0vw 1vw 1vh;
-  grid-template-columns: 25% 25% 25% 25%;
-  gap: 1vw;
-}
-
-.network-navigation {
-  width: 100%;
-  height: 7vh;
-  display: grid;
-  align-content: center;
-  text-align: center;
-  justify-content: center;
-  padding: 3vw 0vw 1vw 1vh;
-  grid-template-columns: 25% 50% 25%;
-}
-
-.navigation-button-next {
-  background: url('\assets\img\arrow-right-icon.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: 0px;
-}
-
-.navigation-button-previous {
-  background: url('\assets\img\arrow-left-icon.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: 0px;
-}
-
-.lighting-switch {
-  width: 75%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  row-gap: 10%;
-  background-color: rgb(31, 31, 31);
-  border: 0;
-  border-radius: 1vw;
-}
-
-.lighting-grid {
-  justify-self: center;
-  width: 90%;
-  height: 75%;
-  display: grid;
-  justify-content: center;
-  justify-items: center;
-  grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
-  /* grid-template-rows: 35% 35%; */
-  row-gap: 5%;
-  column-gap: 2vh;
-}
-
-.lighting-grid-scenes {
-  justify-self: center;
-  width: 90%;
-  height: 60%;
-  display: grid;
-  justify-content: center;
-  justify-items: center;
-  grid-template-columns: 16% 16% 16% 16% 16% 16%;
-  /* grid-template-rows: 35% 35%; */
-  row-gap: 5%;
-  column-gap: 2vh;
-}
-
-.lighting-scences {
-  height: 10%;
-  flex-direction: row;
-  display: flex;
-  width: 90%;
-  column-gap: 2%;
-  padding: 20px;
-}
-
-.flip-button {
-  aspect-ratio: 1;
-  width: 5vw;
-  height: 5vw;
-  position: inherit;
-  display: flex;
-  border: 0px;
-}
-
-.dpad-active {
-  background: url('\assets\img\buttongridbutton.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.numpad-active {
-  background: url('\assets\img\exitbutton.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-
-.stop-button {
-  background: url('\assets\img\stopbutton.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* Remote */
-.remote {
-  position: absolute;
-  /* background-color: red; */
-  left: 0%;
-  width: 47%;
-  height: 100%;
-  align-content: center;
-}
-
-.remote-centering {
-  position: inherit;
-  /* background-color: green; */
-  top: 0vh;
-  left: 10%;
-  width: 60%;
-  height: 100%;
-  padding-left: 10%;
-  padding-right: 10%;
-  /* background-color: red; */
-  align-content: center;
-}
-
-.remote-casing-numpad {
-  padding-top: 7%;
-  height: 60%;
-  display: grid;
-  grid-template-areas:
-      "a b c"
-      "d e f"
-      "h i j"
-      "k k k";
-  gap: 2%;
-  grid-template-rows: 60px 60px 60px 60px;
-}
-
-.light-button-slider {
-  width: 75%;
-  height: 100%;
-  background-color: rgb(31, 31, 31);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 5%;
-}
-
-.light-button-on-off {
-  width: 70%;
-  height: 100%;
-  background-color: rgb(50 50 50);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  font-size: auto;
-}
-
-.light-button-on-off:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
-}
-
-.remote-button-generic {
-  width: 100%;
-  height: 100%;
-  background-color: rgb(31, 31, 31);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  font-size: auto;
-}
-
-.remote-button-generic:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
-}
-
-.remote-button-wide {
-  grid-column: span 3;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(31, 31, 31);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-}
-
-.remote-button-wide:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
-}
-
-
-.dpad {
-  position: relative;
-  top: -3vh;
-  left: 12.5%;
-  display: grid;
-  width: 21vw;
-  height: 21vw;
-  /* background-color: red; */
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  background-image: url('\assets\img\dpad_default.png');
-}
-
-.dpad-button {
-  position: inherit;
-  width: 7vw;
-  height: 7vw;
-  background: transparent;
-  border: 0;
-}
-
-.dpad-up-press {
-  background-image: url('\assets\img\dpad_up.png');
-}
-
-.dpad-down-press {
-  background-image: url('\assets\img\dpad_down.png');
-}
-
-.dpad-left-press {
-  background-image: url('\assets\img\dpad_left.png');
-}
-
-.dpad-right-press {
-  background-image: url('\assets\img\dpad_right.png');
-}
-
-.dpad-select-press {
-  background-image: url('\assets\img\dpad_select.png');
-}
-
-
-.appletv-dpad {
-  width: 21vw;
-  height: 21vw;
-  left: 39vw;
-  top: 2vh;
-  grid-template-areas:
-    "a b c"
-    "d e f"
-    "h i j"
-    "k k k";
-}
-
-.menu-guide-casing {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 5vh;
-  gap: 30%;
-  padding-top: 3%;
-  position: relative;
-  z-index: 1;
-}
-
-.back-exit-casing {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 5vh;
-  gap: 30%;
-  position: relative;
-  z-index: 1;
-  top: -5vh;
-}
-
-.reverse-play-pause-forward-casing {
-  padding-top: 2%;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 5vh;
-  gap: 5%;
-  position: relative;
-  top: -3vh;
-}
-
-.stop-record-casing {
-  padding-top: 1%;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 5vh;
-  gap: 5%;
-  padding-left: 20%;
-  position: relative;
-  top: -3vh;
-}
-
-
-.stop-record-casing>.remote-button-generic {
-  width: 30%;
-  height: 100%;
-  background-color: rgb(31, 31, 31);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  font-size: auto;
-}
-
-.stop-record-casing>.remote-button-generic:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
-}
-
-.coloured-buttons {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  height: 7vh;
-  justify-content: center;
-  gap: 5%;
-  padding-top: 1%;
-  position: relative;
-  top: -2vh;
-}
-
-
-.circle {
-  border-radius: 100%;
-  aspect-ratio: 1;
-  width: 7vh;
-}
-
-.inner-circle {
-  width: 80%;
-  display: block;
-  border-radius: 100%;
-  left: 10%;
-  position: relative;
-  aspect-ratio: 1;
-}
-
-.appletv-dpad>.dpad-button {
-  /* background-color: red; */
-  position: inherit;
-  width: 7vw;
-  height: 7vw;
-  background: transparent;
-  border: 0;
-}
-
-
-.appletv-button {
-  width: 7vw;
-  height: 7vw;
-  border-radius: 100%;
-  font-size: 1.681vw;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 0;
-  background-color: rgb(31, 31, 31);
-  color: var(--font);
-  position: inherit;
-  background-repeat: no-repeat;
-  background-size: 61.8%;
-  background-position: center center;
-}
-
-
-.appletv-button:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
-}
-
-
-.appletv-menu-position {
-  left: 35vw;
-  top: 35vh;
-}
-
-.appletv-airplay-position {
-  left: 57vw;
-  top: 35vh;
-}
-
-.appletv-playstop-position {
-  left: 35vw;
-  top: 50vh;
-}
-
-.webex-call-menu {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  align-self: center;
-  height: 80%;
-  column-gap: 3%;
-  padding-left: 3%;
-  padding-right: 3%;
-}
-
-.webex-startup {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 40%;
-  width: 100%;
-}
-
-.webex-dpad {
-  position: inherit;
-  width: 21vw;
-  height: 21vw;
-  left: 15vw;
-  top: 7vh;
-  grid-template-areas:
-    "a b c"
-    "d e f"
-    "h i j"
-    "k k k";
-}
-
-.webex-dpad>.dpad-button {
-  /* background-color: red; */
-  position: inherit;
-  width: 7vw;
-  height: 7vw;
-  background: transparent;
-  border: 0;
-}
-
-.webex-button {
-  width: 7vw;
-  height: 7vw;
-  border-radius: 100%;
-  font-size: 1.681vw;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 0;
-  background-color: rgb(31, 31, 31);
-  color: var(--font);
-  position: inherit;
-  background-repeat: no-repeat;
-  background-size: 61.8%;
-  background-position: center center;
-  text-align: center;
-}
-
-.webex-onactive:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
-}
-
-
-.webex-accept-button {
-  background-color: rgb(0, 255, 0);
-  background-size: 80%;
-}
-
-.webex-join-booking {
-  background-color: rgb(0, 255, 0);
-  width: 12vw;
-  height: 7.5vh;
-  margin-right: 5vw;
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  font-weight: bold;
-  font-size: 1.5em;
-}
-
-.webex-booking {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  column-gap: 1vw;
-}
-
-.webex-decline-button {
-  background-color: red;
-  background-size: 80%;
-}
-
-.webex-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  row-gap: 5vw;
-  width: 25vw;
-  column-gap: 1vw;
-}
-
-
-.webex-top-grid {
-  z-index: 1;
-}
-
-
-.webex-bottom-grid {
-  z-index: 1;
-}
-
-.webex-presets {
-  display: flex;
-  flex-direction: column;
-  gap: 1vw;
-  width: 12vw;
-  height: 21vw;
-}
-
-
-.webex-preset-buttons {
-  width: 100%;
-  height: 100%;
-  background-color: rgb(31, 31, 31);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  font-size: 1.681vw;
-}
-
-
-.webex-selfview {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  width: 30vw;
-  height: 15vw;
-  position: inherit;
-  left: 4.5vw;
-  gap: 1%;
-  row-gap: 2%;
-  top: 33vh;
-}
-
-.selfview-active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
-}
-
-
-
-.webex-selfview-on-off {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  width: 15vw;
-  height: 15vw;
-  position: inherit;
-  left: 2vw;
-  top: 3vh;
-  gap: 3%;
-}
-
-.webex-fullscreen-on-off {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  width: 15vw;
-  height: 15vw;
-  position: inherit;
-  left: 21vw;
-  top: 3vh;
-  gap: 3%;
-}
-
-.webex-back-to-main {
-  width: 10vw;
-  height: 6vh;
-  position: inherit;
-  top: 2vh;
-  left: 25vw;
-}
-
-.webex-positioning {
-  width: 32vw;
-  height: 35vh;
-  top: 11vh;
-  left: 3vw;
-}
-
-.mic-mute-off {
-  background-image: url('..\img\mic-mute-off.png');
-}
-
-.mic-mute-on {
-  background-image: url('..\img\mic-mute-on.png');
-}
-
-.cam-mute-off {
-  background-image: url('..\img\cam-active.png');
-}
-
-.cam-mute-on {
-  background-image: url('..\img\cam-muted.png');
-}
-
-
-.call-div {
-  left: 27.5vw;
-  top: 50vh;
-  position: inherit;
-  width: 7vw;
-  height: 15vh;
-}
-
-.call-tag-positioning {
-  width: 100%;
-  position: inherit;
-  top: 8.5vh;
-  font-size: 2em;
-  text-align: center;
-}
-
+    height: 80px;
+    min-width: 80px;
+    border-radius: 16px;
+    background: var(--btn-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.8rem;
+    gap: 5px;
+}
+
+.source-btn:active, 
+.source-btn.active, 
+.source-button-active {
+    background: var(--text-accent);
+    color: #000;
+    box-shadow: 0 0 15px var(--text-accent);
+    border-color: var(--text-accent);
+}
+
+.source-btn img, .source-button img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* --- CONTENT AREA --- */
+.content-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.sub-page-container {
+    display: grid;
+    /* CHANGE: Fixed width for Remote (340px), Rest for Channels */
+    grid-template-columns: 340px 1fr; 
+    gap: 30px;
+    height: 100%;
+    width: 100%;
+}
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    align-content: start; 
+    gap: 15px;
+    
+    /* Flex logic to fill remaining space */
+    width: 100%;
+    flex: 1; 
+    min-height: 0; 
+    
+    /* Scroll logic */
+    overflow-y: auto; 
+    padding-right: 5px;
+    scroll-behavior: smooth;
+}
+
+/* --- GLASS BOX COMPONENT --- */
+.glass-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    min-height: 0;  /* Allows the box to shrink below its content size */
+    height: 100%;   /* Forces it to fill the grid cell exactly */
+}
+
+/* --- REMOTE CONTROL STYLING --- */
+.remote-container {
+    display: flex;
+    flex-direction: column;
+    /* CHANGE: Reduced gap from 20px to 12px to pack buttons tighter */
+    gap: 12px; 
+    width: 100%;
+    /* CHANGE: Ensure it centers within the new narrower column */
+    align-items: center; 
+}
+
+.remote-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+    /* NEW: Prevent buttons from stretching weirdly */
+    flex-shrink: 0; 
+}
+
+.r-btn {
+    background: var(--btn-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.r-btn:active {
+    background: var(--text-main);
+    color: #000;
+    transform: scale(0.95);
+}
+
+.r-btn.pill {
+    width: 100px;
+    border-radius: 30px;
+}
+
+.r-btn.rect {
+    width: 100%;
+    border-radius: 12px;
+    height: 50px;
+}
+
+/* --- DPAD GRID --- */
+.dpad-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    margin: 10px 0;
+    align-self: center;
+}
+
+.dpad-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.dpad-btn:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dpad-center {
+    background: var(--btn-bg);
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+}
+
+
+/* --- TRANSPORT & COLORS --- */
+.transport-bar {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 40px;
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+}
+
+/* --- COLOR ROW CONTAINER --- */
+.color-row {
+    display: flex;
+    flex-direction: row;    /* Forces horizontal alignment */
+    width: 100%;            /* Spans the full width of the remote box */
+    gap: 15px;              /* Space between buttons */
+    margin-top: 20px;       /* Pushes it away from the Exit/Back buttons */
+    padding: 0 10px;        /* Safety padding so they don't hit the edges */
+}
+
+/* --- COLOR BUTTONS --- */
+.c-btn {
+    flex: 1;                /* MAGIC FIX: Grows width to fill the row evenly */
+    height: 25px;           /* Good target size for fingers */
+    border-radius: 8px;     /* Nice rounded corners */
+    border: none;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+/* Specific Colors & Shadows */
+.c-btn.red { background: #ef4444; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); }
+.c-btn.green { background: #22c55e; box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3); }
+.c-btn.yellow { background: #eab308; box-shadow: 0 4px 10px rgba(234, 179, 8, 0.3); }
+.c-btn.blue { background: #3b82f6; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); }
+
+/* Touch Feedback (Glow) */
+.c-btn:active {
+    transform: scale(0.95);
+    filter: brightness(1.4);
+    box-shadow: 0 0 15px currentColor;
+    opacity: 1;
+}
+
+/* --- CHANNELS --- */
+.channel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    
+    /* NEW: Forces this header to be tall enough to match the right side */
+    min-height: 80px; 
+}
+
+/* Tweak Power Button size specifically when it's inside the header */
+.channel-header .power-btn {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.2rem;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--btn-bg);
+    padding: 5px 15px;
+    border-radius: 30px;
+    border: 1px solid var(--glass-border);
+}
+
+
+.channel-btn {
+    aspect-ratio: 16/9;
+    background: var(--btn-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-sub);
+    font-size: 0.8rem;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.channel-btn:active {
+    border-color: var(--text-accent);
+    color: var(--text-accent);
+}
+
+/* --- HEADER LAYOUT --- */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns Logo to the Left */
+    padding: 0 20px;
+    position: relative;          /* Critical: Anchors the absolute time element */
+    
+    /* Keep your existing font settings */
+    color: var(--text-sub);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- LOGO (Left) --- */
+.header-logo {
+    height: 40px; /* Adjust size as desired */
+    width: auto;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+/* --- TIME (Dead Center) --- */
+#current-time {
+    position: absolute;          /* Floats freely on top */
+    left: 50%;                   /* Move to 50% of the screen width */
+    transform: translateX(-50%); /* Shift back by half its own width to center perfectly */
+    
+    font-weight: 600;
+    color: var(--text-main);     /* Optional: Make time brighter/white */
+}
+/* --- VOLUME BAR --- */
+.volume-container {
+    background: var(--glass-bg);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    gap: 20px;
+}
+
+.vol-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    
+    /* Magic Gradient: Uses the variable set by JS to create the 'Fill' effect */
+    background: linear-gradient(90deg, var(--text-accent) var(--background-size), rgba(255,255,255,0.2) var(--background-size));
+}
+
+/* Ensure the thumb (handle) stays on top */
+.vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--text-main);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    margin-top: 0px; /* Aligns thumb with track if needed */
+}
+
+/* Active State (Muted) */
+.r-btn.muted-active {
+    background-color: #ef4444; /* Bright Red Background */
+    border-color: #ef4444;
+    color: white;              /* White Icon */
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); /* Red Glow */
+}
+
+/* Ensure the mute button doesn't shrink */
+#volume-mute {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* --- MUTED SLIDER STATE --- */
+
+/* Change the fill color (gradient) to Red */
+.vol-slider.slider-muted {
+    background: linear-gradient(90deg, #ef4444 var(--background-size), rgba(255,255,255,0.2) var(--background-size));
+}
+
+/* Optional: Change the thumb (handle) to Red as well */
+.vol-slider.slider-muted::-webkit-slider-thumb {
+    background: #ef4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+/* --- UTILITIES --- */
+.hide-element,
 .display-none-class {
-  /* display: none; */
-  visibility: hidden;
+    display: none !important;
 }
 
-
-#webex-sub p {
-  text-align: center;
-  font-size: 1.681vw;
+/* --- LOADING SPINNER --- */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
 
-.list-container {
-  position: inherit;
-  /* background-color: rgb(31, 31, 31); */
-
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-top: 5px solid var(--text-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
-.webex-container {
-  background-color: rgb(31, 31, 31);
-  border-radius: 1vw;
+/* --- ACTIVE CHANNEL FEEDBACK --- */
+.channel-btn.active-channel {
+    border-color: var(--text-live); /* Bright Green Border */
+    background-color: rgba(34, 197, 94, 0.15); /* Use background-COLOR only, so the image stays */
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4); /* Green Shadow */
+    color: #ffffff;
+    font-weight: bold;
 }
 
-.brightsign-positioning {
-  width: 80vw;
-  height: 37vh;
-  left: 5vw;
-  top: 14vh;
+/* --- LARGE NAVIGATION & CHANNEL BUTTONS --- */
+
+/* 1. Make the Network Name text larger */
+.nav-text {
+    font-size: 1.5rem;   /* Increased from default */
+    font-weight: 600;
+    min-width: 150px;    /* Gives it more space so text doesn't jump */
+    text-align: center;
 }
 
-
-.selection-div {
-  font-size: 4vh;
-  color: white;
-  flex: 0 0 8vh;
-  /* border: 1px solid #ccc; */
-  border-bottom: 1px solid #ccc;
-  padding: 0px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
+/* 2. Make the Left/Right Arrows larger */
+.nav-arrow-btn {
+    width: 60px;         /* Increased from 30px */
+    height: 60px;        /* Increased from 30px */
+    font-size: 1.5rem;   /* Larger arrow icon */
+    background: transparent; /* Optional: blends better with bar */
+    border: none;
 }
 
-
-.selection-div:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
+/* 3. Channel Control Pills (Slightly smaller for Header) */
+.r-btn.nav-pill {
+    width: 90px;         /* Reduced from 120px */
+    height: 50px;        /* Reduced from 70px */
+    border-radius: 25px; /* Adjusted radius */
+    font-size: 1rem;     /* Adjusted font size */
+    font-weight: bold;
+    background: var(--btn-bg);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
 }
 
-.contact-selection {
-  font-size: 4vh;
-  color: white;
-  flex: 0 0 8vh;
-  /* border: 1px solid #ccc; */
-  border-bottom: 1px solid #ccc;
-  padding: 0px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.r-btn.nav-pill:active {
+    background: var(--text-accent);
+    color: black;
+    transform: scale(0.98);
 }
 
+/* --- FOXTEL SPECIFIC STYLING --- */
 
-.contact-selection:active {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
+/* 1. The Characteristic Foxtel Orange OK Button */
+#fox-remote-casing-dpad .dpad-center {
+    background-color: #ff7900; /* Foxtel Orange */
+    color: #000; /* Black text for contrast */
+    border-color: #ff7900;
+    box-shadow: 0 0 15px rgba(255, 121, 0, 0.4);
+    font-weight: 800;
 }
 
-/* Image grabbed from  https://icons8.com/icons/set/folder */
-.folder-icon {
-  display: flex;
-  color: white;
-  background: url('\assets\img\folder-icon.png');
-  width: 50px;
-  height: 50px;
+#fox-remote-casing-dpad .dpad-center:active {
+    background-color: #e66e00;
+    transform: scale(0.95);
 }
 
-/* Image grabbed from  https://icons8.com/icons/set/picture */
-.picture-icon {
-  display: flex;
-  color: white;
-  background: url('\assets\img\picture-icon.png');
-  width: 50px;
-  height: 50px;
+/* 2. Style the "123/Nav" Toggle to look like a Utility Button */
+#foxtel-remote-style {
+    border-color: var(--text-accent);
+    color: var(--text-accent);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
-/* Image grabbed from  https://icons8.com/icons/set/video */
-.video-icon {
-  display: flex;
-  color: white;
-  background: url('\assets\img\video-icon.png');
-  width: 50px;
-  height: 50px;
+/* 3. Numpad Visibility Animation (Optional) */
+#fox-remote-casing-dpad, #fox-remote-casing-numpad {
+    transition: opacity 0.2s ease-in-out;
 }
 
-.brightsign-control-buttons {
-  position: inherit;
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  width: 9vw;
-  height: 40vh;
-  gap: 1vw;
-  font-size: 20px;
-  left: 88vw;
-  top: 4vh;
+/* --- DISPLAY POWER BUTTON --- */
+.power-btn {
+    border-color: #ef4444; /* Red Border */
+    color: #ef4444;        /* Red Icon */
+    font-size: 1.5rem;     /* Larger Icon */
+    width: 60px !important; /* Force it to be circle/square, not a wide pill */
 }
 
-.brightsign-length-slider {
-  position: inherit;
-  width: 80vw;
-  height: 1vh;
-  left: 5vw;
-  top: 50vh;
-  /* background-color: red; */
-  display: flex;
-  flex-direction: column;
+.power-btn:active {
+    background-color: #ef4444;
+    color: white;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
 }
 
-.indicate-text {
-  width: 100%;
-  text-align: center;
-  font-family: "Crestron";
-  font-size: 1.5em;
-}
-
-.brightsign-time-button {
-  position: inherit;
-  width: 9vw;
-  height: 5vh;
-  left: 88vw;
-  top: 56vh;
-  background-color: rgb(31, 31, 31);
-  border: 0;
-  border-radius: 1vw;
-  color: var(--font);
-  font-size: 1vw;
-}
-
-.brightsign-back-button {
-  position: inherit;
-  width: 10vw;
-  height: 7vh;
-  left: 5vw;
-}
-
-
-.video-control-container {
-  position: inherit;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 40vw;
-  height: 15vh;
-  GAP: 1vw;
-  left: 30vw;
-  top: 30vh;
-}
-
-
-#media-file-display {
-  position: inherit;
-  font-size: 3em;
-  width: 40vw;
-  height: 15vh;
-  left: 30vw;
-  top: 12vh;
-  text-align: center;
-}
-
-.slider-horizontal {
-  width: 100%;
-}
-
-.slider-horizontal,
-.slider-horizontal::-webkit-slider-runnable-track,
-.slider-horizontal::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  background: none;
-}
-
-.slider-horizontal::-webkit-slider-runnable-track {
-  height: 1.5vh;
-  background: linear-gradient(to right, #2761ff, #2761ff), #D7D7D7;
-  background-size: var(--background-size, 0%) 100%;
-  background-repeat: no-repeat;
-  border-radius: 5vw;
-
-}
-
-.slider-horizontal::-webkit-slider-thumb {
-  width: 3vh;
-  height: 3vh;
-  cursor: pointer;
-  background: white;
-  border: 0px;
-  border-radius: 50%;
-  margin-top: -6px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-/** FF*/
-
-.slider-horizontal::-moz-range-progress {
-  height: 1.5vh;
-  background-color: #2761ff;
-  border-radius: 5vw;
-}
-
-.slider-horizontal::-moz-range-track {
-  height: 1.5vh;
-  background-color: #D7D7D7;
-  border-radius: 5vw;
-}
-
-.slider-horizontal::-moz-range-thumb {
-  width: 3vh;
-  height: 3vh;
-  cursor: pointer;
-  background: white;
-  border: 0px;
-  border-radius: 50%;
-  margin-top: -6px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-input[type=range][orient=vertical] {
-  -webkit-appearance: none;
-  /*-webkit-appearance: slider-vertical; /*if we remove this slider-vertical then horizondally range bar styles applies correctly*/
-  width: 40vh;
-  transform: rotate(-90deg);
-  transform-origin: center;
-  position: relative;
-  left: -7vw;
-  top: 18.5vh;
-}
-
-.text-positioning {
-  width: 100%;
-  /* background-color: red; */
-  color: #c0c0c0;
-  position: relative;
-  text-align: center;
-  font-family: "Crestron";
-  font-size: 3em;
-}
-
-.top-text-positioning {
-  display: flex;
-  flex-direction: column;
-
-}
-
-.small-text {
-  font-size: 1.5em;
-  top: -3vh
-}
-
-.hide-element {
-  visibility: hidden;
-}
-
-.indicate-text {
-  width: 100%;
-  text-align: center;
-  font-family: "Crestron";
-  font-size: 1.5em;
-}
-
-.loading-class {
-  background-color: rgb(0, 0, 0, 0.5);
-  position: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.loading-text {
-  font-family: "Crestron";
-  font-size: 4em;
-}
-
-.power-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-}
-
-.loading-gif {
-  display: flex;
-  position: relative;
-  width: 10vw;
-  aspect-ratio: 1;
-  background: url('\assets\img\loading.gif');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-
-#battery-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 150px;
-  height: 30px;
-  color: white;
-  border: black;
-  border-radius: 1px;
-  border-style: solid;
-  font-size: 26px;
-}
-
-#battery-bg {
-  background-color: green;
-  width: 100%;
-  height: 100%;
-}
-
-#battery-content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  top: 0px;
-  text-align: center;
-}
-
-#battery-level {
-  position: relative;
-  text-align: center;
-  align-self: center;
-  justify-content: center;
-}
-
-#battery-charging-1 {
-  left: 1px;
-  top: 1px;
-  visibility: hidden;
-  position: absolute;
-}
-
-#battery-charging-2 {
-  right: 1px;
-  top: 1px;
-  visibility: hidden;
-  position: absolute;
-}
-
-.selected-item {
-  background-color: rgb(0, 0, 212);
-  color: var(--font);
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

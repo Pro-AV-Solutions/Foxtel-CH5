@@ -7,6 +7,25 @@ window.bridgeReceiveBooleanFromNative = CrComLib.bridgeReceiveBooleanFromNative;
 window.bridgeReceiveStringFromNative = CrComLib.bridgeReceiveStringFromNative;
 window.bridgeReceiveObjectFromNative = CrComLib.bridgeReceiveObjectFromNative;
 
+function updateClock() {
+    const timeElement = document.getElementById("current-time");
+    
+    if (timeElement) {
+        const now = new Date();
+        
+        // formats based on the Device's local settings
+        const timeString = new Intl.DateTimeFormat('en-AU', {
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+        }).format(now);
+
+        timeElement.innerHTML = timeString;
+    }
+}
+
+updateClock();
+setInterval(updateClock, 1000);
 // Basic Example of a single button
 
 // const button = document.querySelector(".demo");
